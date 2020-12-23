@@ -1,0 +1,36 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.1.RELEASE'
+		log4jVersion = '2.11.0'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.gbuchely'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	implementation('org.springframework.boot:spring-boot-starter-web') {
+		// Avoid that spring use the default Log4J configuration when start
+		exclude module: 'log4j-to-slf4j', group: 'org.apache.logging.log4j'
+	}
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	compile("org.apache.logging.log4j:log4j-api:${log4jVersion}")
+	compile("org.apache.logging.log4j:log4j-core:${log4jVersion}")
+}

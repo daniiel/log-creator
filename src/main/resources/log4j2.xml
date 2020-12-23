@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appenders>
+        <console name="console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern='{"timestamp":"%d{dd-MMM-yyyy HH:mm:ss,SSS}", "level":"%-5level", "thread":"[%t]", "logger":"%logger{36}", "message":"%msg%rThrowable{}"}'/>
+            <!--
+            <PatternLayout pattern="%d{dd-MMM-yyyy HH:mm:ss,SSS} %-5level [%t]  %logger{36} - %msg%n%rThrowable{separator( | )}"/>
+
+            -->
+            <!--
+            <PatternLayout>
+                <ScriptPatternSelector defaultPattern="%d{dd-MMM-yyyy HH:mm:ss,SSS} %-5level [%t]  %logger{36} - %msg%n%rThrowable{separator( | )}">
+                    <Script name="selector" language="javascript"><![CDATA[
+                            result=null;
+                            if (logEvent.getLoggerName() == "com.gbuchely.logcreator.controller.LogCreatorController2") {result="METRIC";}
+                            result;
+                        ]]>
+                    </Script>
+                    <PatternMatch key="METRIC" pattern='{"timestamp":"%d{dd-MMM-yyyy HH:mm:ss,SSS}","level":"%-5level","thread":"%t","logger":"%logger{36}","message":%msg%rThrowable{separator( | )}}%n'/>
+                </ScriptPatternSelector>
+            </PatternLayout>-->
+
+        </console>
+    </appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</configuration>
